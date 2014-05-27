@@ -1,5 +1,7 @@
 
-Ray can be utilized to classify k-mers in a taxonomy. To do so,
+See also sebhtml [Paper-Replication-2012](https://github.com/sebhtml/Paper-Replication-2012)
+
+[Ray](https://github.com/sebhtml/ray) can be utilized to classify k-mers in a taxonomy. To do so,
 Ray needs a taxonomy. You can use anything for the taxonomy.
 At our center, we are using Greengenes and NCBI.
 
@@ -7,30 +9,30 @@ See these documents for general documentation (in the Ray distribution)
  about graph coloring and taxonomic profiling
 features (called Ray Communities):
 
-        - Documentation/Taxonomy.txt
-        - Documentation/BiologicalAbundances.txt
+- Documentation/Taxonomy.txt
+- Documentation/BiologicalAbundances.txt
 
 
-To download the NCBI taxonomy and generate required files:
+Run this:
 
-        export PATH=~/git-clones/Paper-Replication-2012/Build-Input-Files-for-NCBI-Taxonomy
-
-Then, run this:
-
-        CreateRayInputStructures.sh
-
+	NCBI-taxonomy-Main.sh
 
 This will generate these files:
 
-        - NCBI-taxonomy/NCBI-Finished-Bacterial-Genomes
-        - NCBI-taxonomy/Genome-to-Taxon.tsv
-        - NCBI-taxonomy/TreeOfLife-Edges.tsv
-        - NCBI-taxonomy/Taxon-Names.tsv
+Genome sequence files :
+* NCBI-taxonomy/NCBI-Genomes-Bacteria
+* NCBI-taxonomy/NCBI-Genomes-Bacteria_DRAFT
+* NCBI-taxonomy/NCBI-Genomes-Viruses
+* NCBI-taxonomy/NCBI-Genomes-Plasmids
+
+Taxonomy files :
+* NCBI-taxonomy/Genome-to-Taxon.tsv
+* NCBI-taxonomy/TreeOfLife-Edges.tsv
+* NCBI-taxonomy/Taxon-Names.tsv
 
 
 Now, you can run Ray as usual (including Ray Méta plugins), but with
 additional options to run Ray Communities plugins as well:
-
 
 mpiexec -n 96 \
 Ray \
@@ -40,7 +42,6 @@ Ray \
 -search NCBI-taxonomy/NCBI-Finished-Bacterial-Genomes \
 -with-taxonomy NCBI-taxonomy/Genome-to-Taxon.tsv \
 NCBI-taxonomy/TreeOfLife-Edges.tsv NCBI-taxonomy/Taxon-Names.tsv
-
 
 
 As usual, you can also put all the arguments in a configuration file like this:
@@ -55,7 +56,6 @@ where Ray.conf contains
 -search NCBI-taxonomy/NCBI-Finished-Bacterial-Genomes
 -with-taxonomy NCBI-taxonomy/Genome-to-Taxon.tsv
 NCBI-taxonomy/TreeOfLife-Edges.tsv NCBI-taxonomy/Taxon-Names.tsv
-
 
 
 So basically, the whole thing does a distributed de Bruijn graph really

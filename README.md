@@ -10,12 +10,12 @@ This originate from the project [Ray Meta](https://github.com/sebhtml/ray) for t
 
 see the NCBI-taxonomy/README
 
-### Gene Ontolog (GO)
+### Gene Ontology (GO)
 
 see the NCBI-taxonomy/GO
 
 
 ## Uniprot Fetcher
 
-$ bash Uniprot/Create-UniprotKB-release.sh -h
+	bash Uniprot/Create-UniprotKB-release.sh -h
 
