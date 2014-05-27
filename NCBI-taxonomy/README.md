@@ -12,7 +12,6 @@ features (called Ray Communities):
 - Documentation/Taxonomy.txt
 - Documentation/BiologicalAbundances.txt
 
-
 Run this:
 
 	NCBI-taxonomy-Main.sh
@@ -34,29 +33,28 @@ Taxonomy files :
 Now, you can run Ray as usual (including Ray Méta plugins), but with
 additional options to run Ray Communities plugins as well:
 
-mpiexec -n 96 \
-Ray \
--k 31 -o Ray-Communities \
--p SeqA_1.fastq SeqA_2.fastq \
--p SeqB_1.fastq SeqB_2.fastq \
--search NCBI-taxonomy/NCBI-Finished-Bacterial-Genomes \
--with-taxonomy NCBI-taxonomy/Genome-to-Taxon.tsv \
-NCBI-taxonomy/TreeOfLife-Edges.tsv NCBI-taxonomy/Taxon-Names.tsv
+Configuration should look like this
+(either in the submission file or in the configuration file) :
 
 
-As usual, you can also put all the arguments in a configuration file like this:
+```
+-k 31
+-o Ray-Communities
 
-mpiexec -n 96 Ray Ray.conf
-
-where Ray.conf contains
-
--k 31 -o Ray-Communities
 -p SeqA_1.fastq SeqA_2.fastq
 -p SeqB_1.fastq SeqB_2.fastq
--search NCBI-taxonomy/NCBI-Finished-Bacterial-Genomes
--with-taxonomy NCBI-taxonomy/Genome-to-Taxon.tsv
-NCBI-taxonomy/TreeOfLife-Edges.tsv NCBI-taxonomy/Taxon-Names.tsv
 
+-search NCBI-taxonomy/NCBI-Genomes-Bacteria
+-search NCBI-taxonomy/NCBI-Genomes-Bacteria_DRAFT
+-search NCBI-taxonomy/NCBI-Genomes-Viruses
+-search NCBI-taxonomy/NCBI-Genomes-Plasmids
+-search NCBI-taxonomy/NCBI-Finished-Bacterial-Genomes
+
+-with-taxonomy NCBI-taxonomy/Genome-to-Taxon.tsv
+	           NCBI-taxonomy/TreeOfLife-Edges.tsv
+	           NCBI-taxonomy/Taxon-Names.tsv
+
+```	
 
 So basically, the whole thing does a distributed de Bruijn graph really
 fast (plugins for the distributed storage engine), assembles de novo the

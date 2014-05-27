@@ -8,12 +8,11 @@ This originate from the project [Ray Meta](https://github.com/sebhtml/ray) for t
 
 ### NCBI-taxonomy
 
-see the NCBI-taxonomy/README
+see the NCBI-taxonomy/README.md
 
 ### Gene Ontology (GO)
 
-see the NCBI-taxonomy/GO
-
+see the GO/README.md
 
 ## Uniprot Fetcher
 
