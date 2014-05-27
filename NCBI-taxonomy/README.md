@@ -16,12 +16,7 @@ Run this:
 
 	NCBI-taxonomy-Main.sh
 
-Will fetch genome collection from NCBI ftp
-	ftp://ftp.ncbi.nlm.nih.gov/genomes/
-		NCBI-Genomes-Bacteria
-		NCBI-Genomes-Bacteria_DRAFT
-		NCBI-Genomes-Viruses
-		NCBI-Genomes-Plasmids
+Will fetch genome collection from NCBI ftp://ftp.ncbi.nlm.nih.gov/genomes/
 
 And will generate these files:
 
