@@ -1,0 +1,75 @@
+
+Ray can be utilized to classify k-mers in a taxonomy. To do so,
+Ray needs a taxonomy. You can use anything for the taxonomy.
+At our center, we are using Greengenes and NCBI.
+
+See these documents for general documentation (in the Ray distribution)
+ about graph coloring and taxonomic profiling
+features (called Ray Communities):
+
+        - Documentation/Taxonomy.txt
+        - Documentation/BiologicalAbundances.txt
+
+
+To download the NCBI taxonomy and generate required files:
+
+        export PATH=~/git-clones/Paper-Replication-2012/Build-Input-Files-for-NCBI-Taxonomy
+
+Then, run this:
+
+        CreateRayInputStructures.sh
+
+
+This will generate these files:
+
+        - NCBI-taxonomy/NCBI-Finished-Bacterial-Genomes
+        - NCBI-taxonomy/Genome-to-Taxon.tsv
+        - NCBI-taxonomy/TreeOfLife-Edges.tsv
+        - NCBI-taxonomy/Taxon-Names.tsv
+
+
+Now, you can run Ray as usual (including Ray Méta plugins), but with
+additional options to run Ray Communities plugins as well:
+
+
+mpiexec -n 96 \
+Ray \
+-k 31 -o Ray-Communities \
+-p SeqA_1.fastq SeqA_2.fastq \
+-p SeqB_1.fastq SeqB_2.fastq \
+-search NCBI-taxonomy/NCBI-Finished-Bacterial-Genomes \
+-with-taxonomy NCBI-taxonomy/Genome-to-Taxon.tsv \
+NCBI-taxonomy/TreeOfLife-Edges.tsv NCBI-taxonomy/Taxon-Names.tsv
+
+
+
+As usual, you can also put all the arguments in a configuration file like this:
+
+mpiexec -n 96 Ray Ray.conf
+
+where Ray.conf contains
+
+-k 31 -o Ray-Communities
+-p SeqA_1.fastq SeqA_2.fastq
+-p SeqB_1.fastq SeqB_2.fastq
+-search NCBI-taxonomy/NCBI-Finished-Bacterial-Genomes
+-with-taxonomy NCBI-taxonomy/Genome-to-Taxon.tsv
+NCBI-taxonomy/TreeOfLife-Edges.tsv NCBI-taxonomy/Taxon-Names.tsv
+
+
+
+So basically, the whole thing does a distributed de Bruijn graph really
+fast (plugins for the distributed storage engine), assembles de novo the
+data by distributed graph traversals (Ray Méta; plugin SeedExtender),
+colors the graph with the reference genomes provided with the -search
+option (Ray Communities, plugin Searcher), and computes taxonomic profiles
+using the provided taxonomy (Ray Communities, -with-taxonomy, plugin PhylogenyViewer).
+
+
+All that stuff is heavily distributed -- each Ray process has 32768 user-space threads
+(workers) and you can throw as many Ray processes as you want to.
+
+
+If you are running Ray on a buggy network (we had problems with Mellanox Infiniband MT26428,
+revision a0), you can turn on virtual communications too.
+
