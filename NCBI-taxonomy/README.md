@@ -48,7 +48,6 @@ Configuration should look like this
 -search NCBI-taxonomy/NCBI-Genomes-Bacteria_DRAFT
 -search NCBI-taxonomy/NCBI-Genomes-Viruses
 -search NCBI-taxonomy/NCBI-Genomes-Plasmids
--search NCBI-taxonomy/NCBI-Finished-Bacterial-Genomes
 
 -with-taxonomy NCBI-taxonomy/Genome-to-Taxon.tsv
 	           NCBI-taxonomy/TreeOfLife-Edges.tsv

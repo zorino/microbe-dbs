@@ -18,3 +18,23 @@ This will generate these files :
 * OntologyTerms.txt
 * Sequences-With-Annotations.fasta
 
+Now, you can run Ray as usual (including Ray Méta plugins), but with
+additional options to run Ray Communities plugins as well:
+
+Configuration should look like this
+(either in the submission file or in the configuration file) :
+
+
+```
+-k 31
+-o Ray-Communities
+
+-p SeqA_1.fastq SeqA_2.fastq
+-p SeqB_1.fastq SeqB_2.fastq
+
+-search GO/EMBL_CDS_Sequences
+
+-gene-ontology GO/OntologyTerms.txt
+	           GO/Annotations.txt
+
+```	
