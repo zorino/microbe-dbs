@@ -1,0 +1,12 @@
+This is for building input files for gene ontology profiling
+with Ray Ontologies.
+
+To build the thing, run:
+
+   $ export PATH=$PATH:`pwd`
+
+and run this in the directory you want the data
+
+   $ GO-Main.sh
+
+
