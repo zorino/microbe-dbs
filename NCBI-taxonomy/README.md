@@ -16,7 +16,14 @@ Run this:
 
 	NCBI-taxonomy-Main.sh
 
-This will generate these files:
+Will fetch genome collection from NCBI ftp
+	ftp://ftp.ncbi.nlm.nih.gov/genomes/
+		NCBI-Genomes-Bacteria
+		NCBI-Genomes-Bacteria_DRAFT
+		NCBI-Genomes-Viruses
+		NCBI-Genomes-Plasmids
+
+And will generate these files:
 
 Genome sequence files :
 * NCBI-taxonomy/NCBI-Genomes-Bacteria
