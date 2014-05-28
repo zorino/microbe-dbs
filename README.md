@@ -1,6 +1,8 @@
-# BioDB Fetcher
+# BacterialDB Fetcher
 
 Utilities to fetch biological databases relevant for bacterial genome or metagenome annotation.
+
+**Dependency : GNU parallel**
 
 ## UniprotKB
 

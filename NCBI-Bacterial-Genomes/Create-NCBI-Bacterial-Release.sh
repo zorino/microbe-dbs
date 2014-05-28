@@ -1,4 +1,6 @@
 #!/bin/bash
+# author : maxime déraspe
+# email : maxime@deraspe.net
 #
 # Script to update NCBI Genbank Bacterial Genomes
 # fetch those files :
@@ -66,30 +68,79 @@ fi
 
 echo " Fetching Bacteria_DRAFT Genomes from NCBI ftp .."
 echo " please wait .."
-wget -A *.gbk* -A *.fna* -A *.faa* -r -nH --cut-dirs=2 --no-parent ftp://ftp.ncbi.nlm.nih.gov/genbank/genomes/Bacteria_DRAFT/
+
+wget --no-parent --no-remove-listing --spider ftp://ftp.ncbi.nlm.nih.gov/genbank/genomes/Bacteria_DRAFT/
+mv .listing Bacteria_DRAFT.listing
+
+mkdir Bacteria_DRAFT
+cd Bacteria_DRAFT
+
+awk '{print $9}' ../Bacteria_DRAFT.listing | sed "s#\r##g" | parallel -j $core \
+"wget -A *.gbk* -A *.fna* -A *.faa* -r -nH --cut-dirs=3 --no-parent ftp://ftp.ncbi.nlm.nih.gov/genbank/genomes/Bacteria_DRAFT/{/}"
+
+# wget -A *.gbk* -A *.fna* -A *.faa* -r -nH --cut-dirs=2 --no-parent ftp://ftp.ncbi.nlm.nih.gov/genbank/genomes/Bacteria_DRAFT/
+
 echo " Finished Bacteria_DRAFT fetching"
 
 echo ""
 echo " Processing the extraction of compressed file (.tgz) .."
 echo " Using GNU parallel with -j $core"
 
-cd Bacteria_DRAFT/
+
 find . -name *.tgz | parallel -j $core "tar xvf {} -C {//}"
 cd ../
 
 echo " Bacteria_DRAFT Extraction Done !"
 echo ""
 
+## Bacteria ##
+
 echo " Fetching Bacteria Complete Genomes Now .."
 
-## Bacteria ##
-wget -A *.gbk* -A *.fna* -A *.faa* -r -nH --cut-dirs=2 --no-parent ftp://ftp.ncbi.nlm.nih.gov/genbank/genomes/Bacteria/
+wget --no-parent --no-remove-listing --spider ftp://ftp.ncbi.nlm.nih.gov/genbank/genomes/Bacteria/
+mv .listing Bacteria.listing
 
+mkdir Bacteria
+cd Bacteria
+
+awk '{print $9}' ../Bacteria.listing | sed "s#\r##g" | parallel -j $core \
+"wget -A *.gbk* -A *.fna* -A *.faa* -r -nH --cut-dirs=3 --no-parent ftp://ftp.ncbi.nlm.nih.gov/genbank/genomes/Bacteria/{/}"
+
+# wget -A *.gbk* -A *.fna* -A *.faa* -r -nH --cut-dirs=2 --no-parent ftp://ftp.ncbi.nlm.nih.gov/genbank/genomes/Bacteria/
 
 echo " Finished Bacteria fetching"
 
-# mkdir Bacteria-All/
-# cd Bacteria-All/
+echo ""
+echo " Creating Output Directories :"
+echo "     All-Bacterial-Contigs/"
+echo "     All-Bacterial-Proteins/"
+echo "     All-Bacterial-Genbanks/"
+
+mkdir All-Bacterial-Contigs
+mkdir All-Bacterial-Proteins
+mkdir All-Bacterial-Genbanks
+
+cd All-Bacterial-Contigs
+for i in `find ../ -name "*.fna"`
+do
+    ln -s $i .
+done
+cd ../
+
+cd All-Bacterial-Proteins
+for i in `find ../ -name "*.faa"`
+do
+    ln -s $i .
+done
+cd ../
+
+cd All-Bacterial-Genbanks
+for i in `find ../ -name "*.gbk"`
+do
+    ln -s $i .
+done
+cd ../
+
 
 ## Create Blast Database ##
 if [[ $blast -eq 1 ]]
