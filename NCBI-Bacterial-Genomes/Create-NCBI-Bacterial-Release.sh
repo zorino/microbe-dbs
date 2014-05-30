@@ -76,7 +76,7 @@ mkdir Bacteria_DRAFT
 cd Bacteria_DRAFT
 
 awk '{print $9}' ../Bacteria_DRAFT.listing | sed "s#\r##g" | parallel -j $core \
-"wget -A *.gbk* -A *.fna* -A *.faa* -r -nH --cut-dirs=3 --no-parent ftp://ftp.ncbi.nlm.nih.gov/genbank/genomes/Bacteria_DRAFT/{/}"
+"wget -a Bacteria_DRAFT.dwl.log -A *.gbk* -A *.fna* -A *.faa* -r -nH --cut-dirs=3 --no-parent ftp://ftp.ncbi.nlm.nih.gov/genbank/genomes/Bacteria_DRAFT/{/}"
 
 # wget -A *.gbk* -A *.fna* -A *.faa* -r -nH --cut-dirs=2 --no-parent ftp://ftp.ncbi.nlm.nih.gov/genbank/genomes/Bacteria_DRAFT/
 
@@ -104,11 +104,13 @@ mkdir Bacteria
 cd Bacteria
 
 awk '{print $9}' ../Bacteria.listing | sed "s#\r##g" | parallel -j $core \
-"wget -A *.gbk* -A *.fna* -A *.faa* -r -nH --cut-dirs=3 --no-parent ftp://ftp.ncbi.nlm.nih.gov/genbank/genomes/Bacteria/{/}"
+"wget -a Bacteria.dwl.log -A *.gbk* -A *.fna* -A *.faa* -r -nH --cut-dirs=3 --no-parent ftp://ftp.ncbi.nlm.nih.gov/genbank/genomes/Bacteria/{/}"
 
 # wget -A *.gbk* -A *.fna* -A *.faa* -r -nH --cut-dirs=2 --no-parent ftp://ftp.ncbi.nlm.nih.gov/genbank/genomes/Bacteria/
 
 echo " Finished Bacteria fetching"
+
+cd ../
 
 echo ""
 echo " Creating Output Directories :"
