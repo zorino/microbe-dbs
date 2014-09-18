@@ -75,7 +75,7 @@ mv .listing Bacteria_DRAFT.listing
 mkdir Bacteria_DRAFT
 cd Bacteria_DRAFT
 
-awk '{print $9}' ../Bacteria_DRAFT.listing | sed "s#\r##g" | parallel -j $core \
+awk '{print $9}' ../Bacteria_DRAFT.listing | sed "s#\r##g" | parallel -j 1 \
 "wget -a ../Bacteria_DRAFT.dwl.log -A *.gbk* -A *.fna* -A *.faa* -r -nH --cut-dirs=3 --no-parent ftp://ftp.ncbi.nlm.nih.gov/genbank/genomes/Bacteria_DRAFT/{/}"
 
 # wget -A *.gbk* -A *.fna* -A *.faa* -r -nH --cut-dirs=2 --no-parent ftp://ftp.ncbi.nlm.nih.gov/genbank/genomes/Bacteria_DRAFT/
@@ -103,14 +103,49 @@ mv .listing Bacteria.listing
 mkdir Bacteria
 cd Bacteria
 
-awk '{print $9}' ../Bacteria.listing | sed "s#\r##g" | parallel -j $core \
+awk '{print $9}' ../Bacteria.listing | sed "s#\r##g" | parallel -j 1 \
 "wget -a ../Bacteria.dwl.log -A *.gbk* -A *.fna* -A *.faa* -r -nH --cut-dirs=3 --no-parent ftp://ftp.ncbi.nlm.nih.gov/genbank/genomes/Bacteria/{/}"
 
 # wget -A *.gbk* -A *.fna* -A *.faa* -r -nH --cut-dirs=2 --no-parent ftp://ftp.ncbi.nlm.nih.gov/genbank/genomes/Bacteria/
 
+cd ../
+
 echo " Finished Bacteria fetching"
 
+## Plasmids ##
+echo " Fetching Bacterial Plasmids Now .."
+
+wget --no-parent --no-remove-listing --spider ftp://ftp.ncbi.nlm.nih.gov/genomes/Plasmids/fna/
+mv .listing Bacteria_Plasmids.listing
+
+mkdir Bacteria_Plasmids
+cd Bacteria_Plasmids
+
+wget ftp://ftp.ncbi.nlm.nih.gov/genomes/Plasmids/plasmids.all.gbk.tar.gz
+wget ftp://ftp.ncbi.nlm.nih.gov/genomes/Plasmids/plasmids.all.fna.tar.gz
+wget ftp://ftp.ncbi.nlm.nih.gov/genomes/Plasmids/plasmids.all.faa.tar.gz
+
+tar zxvf plasmids.all.gbk.tar.gz &
+tar zxvf plasmids.all.fna.tar.gz &
+tar zxvf plasmids.all.faa.tar.gz &
+
+wait
+
+for i in $(find . -name gbk -type d); do mv $i ../; done
+for i in $(find . -name fna -type d); do mv $i ../; done
+for i in $(find . -name faa -type d); do mv $i ../; done
+rm -fr *
+mv ../gbk ../fna ../faa .
+
 cd ../
+
+echo " Finished Bacterial Plasmids fetching"
+
+
+echo " Creating Listing Files.."
+find Bacteria* -name "*.faa" > All-Proteins.listing.txt
+find Bacteria* -name "*.gbk" > All-Genbanks.listing.txt
+find Bacteria* -name "*.fna" > All-Contigs.listing.txt
 
 echo ""
 echo " Creating Output Directories :"
