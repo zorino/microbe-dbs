@@ -21,8 +21,10 @@ program=$0
 OutputDirectory=$1
 waitingSeconds=1
 
-export PATH=$PATH:`pwd`
+curDir=`pwd`
+programDir=$(dirname $program)
 
+export PATH=$PATH:$curDir:$programDir
 
 curDate=$(date +%Y-%m-%d)
 
