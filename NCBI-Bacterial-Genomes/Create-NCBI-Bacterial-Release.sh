@@ -147,36 +147,38 @@ find Bacteria* -name "*.faa" > All-Proteins.listing.txt
 find Bacteria* -name "*.gbk" > All-Genbanks.listing.txt
 find Bacteria* -name "*.fna" > All-Contigs.listing.txt
 
-echo ""
-echo " Creating Output Directories :"
-echo "     All-Bacterial-Contigs/"
-echo "     All-Bacterial-Proteins/"
-echo "     All-Bacterial-Genbanks/"
+# No need to create all those symlinks since we have the listing
 
-mkdir All-Bacterial-Contigs
-mkdir All-Bacterial-Proteins
-mkdir All-Bacterial-Genbanks
+# echo ""
+# echo " Creating Output Directories :"
+# echo "     All-Bacterial-Contigs/"
+# echo "     All-Bacterial-Proteins/"
+# echo "     All-Bacterial-Genbanks/"
 
-cd All-Bacterial-Contigs
-for i in `find ../ -name "*.fna"`
-do
-    ln -s $i .
-done
-cd ../
+# mkdir All-Bacterial-Contigs
+# mkdir All-Bacterial-Proteins
+# mkdir All-Bacterial-Genbanks
 
-cd All-Bacterial-Proteins
-for i in `find ../ -name "*.faa"`
-do
-    ln -s $i .
-done
-cd ../
+# cd All-Bacterial-Contigs
+# for i in `find ../ -name "*.fna"`
+# do
+#     ln -s $i .
+# done
+# cd ../
 
-cd All-Bacterial-Genbanks
-for i in `find ../ -name "*.gbk"`
-do
-    ln -s $i .
-done
-cd ../
+# cd All-Bacterial-Proteins
+# for i in `find ../ -name "*.faa"`
+# do
+#     ln -s $i .
+# done
+# cd ../
+
+# cd All-Bacterial-Genbanks
+# for i in `find ../ -name "*.gbk"`
+# do
+#     ln -s $i .
+# done
+# cd ../
 
 
 ## Create Blast Database ##
