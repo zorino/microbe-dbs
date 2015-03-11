@@ -1,28 +1,14 @@
 # BacterialDB Fetcher
 
-Utilities to fetch biological databases relevant for bacterial genome or metagenome annotation.
-
-**Dependency : GNU parallel**
-
-## UniprotKB
+Utilities to fetch biological databases relevant for bacterial genomics analysis.
 
 ```
-$ bash Uniprot/Create-UniprotKB-release.sh -h
-
-Create-UniprotKB-release.sh -d 2014_04
-   optional :   [-r]  Download the RDF database
-   optional :   [-b]  Create Blast Database
-```
-
-## NCBI-Genomes Bacteria
-
-```
-$ bash NCBI-Bacterial-Genomes/Create-NCBI-Bacterial-Release.sh -h
-
-Create-NCBI-Bacterial-Release.sh -d 2014_04
-   option -b create blast database
-   option -c number of core [default 8] (for extraction processing)
-   
+$ bash BacterialDB-loader.sh -h
+ BacterialDB-loader.sh -d 2015_03
+     option -g download ncbi genbank bacteria (ftp://ftp.ncbi.nlm.nih.gov/genomes/genbank/bacteria/)
+     option -p download ncbi plasmids (ftp://ftp.ncbi.nlm.nih.gov/genomes/Plasmids/)
+     option -f download ebi phages (ftp://ftp.ebi.ac.uk/pub/databases/fastafiles/embl_genomes/genomes/Phage/)
+     option -b create blast database (BLAST executables need to be in your path)
 ```
 
 ## Ray Communities for bacterial metagenomic profiling
