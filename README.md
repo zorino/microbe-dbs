@@ -8,7 +8,7 @@ $ bash BacterialDB-loader.sh -h
      option -g download ncbi genbank bacteria (ftp://ftp.ncbi.nlm.nih.gov/genomes/genbank/bacteria/)
      option -p download ncbi plasmids (ftp://ftp.ncbi.nlm.nih.gov/genomes/Plasmids/)
      option -f download ebi phages (ftp://ftp.ebi.ac.uk/pub/databases/fastafiles/embl_genomes/genomes/Phage/)
-     option -b create blast database (BLAST executables need to be in your path)
+     option -b create blast database (BLAST executables need to be in your PATH)
 ```
 
 ## Ray Communities for bacterial metagenomic profiling
