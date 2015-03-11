@@ -26,7 +26,7 @@ else
 		genome=1
 		;;
 	    f)
-		phage=1
+		phages=1
 		;;
 	    p)
 		plasmid=1
@@ -96,8 +96,24 @@ if [[ $plasmid -eq 1 ]]
 then
     mkdir Plasmids-NCBI-$date
     cd Plasmids-NCBI-$date
-    echo " Fetching Bacterial Plasmids Now .."
-    wget --no-parent --no-remove-listing --spider ftp://ftp.ncbi.nlm.nih.gov/genomes/Plasmids/fna/
+    echo "Downloading Bacterial Plasmids"
+
+    wget -q ftp://ftp.ncbi.nlm.nih.gov/genomes/Plasmids/plasmids.all.gff.tar.gz
+    tar xvf plasmids.all.gff.tar.gz
+    mv am/ftp-genomes/Plasmids/gff/ ./
+    rm -fr am
+
+    wget -q ftp://ftp.ncbi.nlm.nih.gov/genomes/Plasmids/plasmids.all.faa.tar.gz
+    tar xvf plasmids.all.faa.tar.gz
+    mv am/ftp-genomes/Plasmids/faa/ ./
+    rm -fr am
+
+    wget -q ftp://ftp.ncbi.nlm.nih.gov/genomes/Plasmids/plasmids.all.fna.tar.gz
+    tar xvf plasmids.all.fna.tar.gz
+    mv am/ftp-genomes/Plasmids/fna/ ./
+    rm -fr am
+
+    cd ../
 fi
 
 ## Phages ##
@@ -105,9 +121,34 @@ if [[ $phages -eq 1 ]]
 then
     mkdir Phages-EBI-$date
     cd Phages-EBI-$date
-    echo " Fetching Bacterial Phages Now .."
-    get -r -l1 --no-parent -nd ftp://ftp.ebi.ac.uk/pub/databases/fastafiles/embl_genomes/genomes/Phage/
-    wget --no-parent --no-remove-listing --spider ftp://ftp.ncbi.nlm.nih.gov/genomes/Plasmids/fna/
+    echo "Downloading Bacterial Phages"
+    wget -q -r -l1 --no-parent -nd ftp://ftp.ebi.ac.uk/pub/databases/fastafiles/embl_genomes/genomes/Phage/
+    echo "Extracting Phages and Renaming fasta files"
+    for i in *.gz
+    do
+        gunzip $i
+        f=${i%.fasta.gz}
+        header=`head -1 $f.fasta`
+        name=`echo $header | \
+                sed "{
+                s/>.* STD://g
+                s/ complete .*//g
+                s/ /_/g
+                s/,//g
+                s/\//-/g
+                }"`
+        c=0
+        while read line
+        do
+            if [ ${line:0:1} == ">"  ]
+            then
+                c=$(($c+1))
+            fi
+            echo $line >> $name-$c.fasta
+        done < $f.fasta
+        rm $f.fasta
+    done
+    cd ../
 fi
 
 
