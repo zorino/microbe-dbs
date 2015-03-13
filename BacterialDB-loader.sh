@@ -84,7 +84,9 @@ then
 	wget -q ftp://ftp.ncbi.nlm.nih.gov/genomes/genbank/bacteria/$i/assembly_summary.txt
 	while read -r i
 	do
-	    wget -q -r -nH --cut-dirs=2 --retr-symlinks --no-remove-listing --retr-symlinks --no-remove-listing $i
+	    wget -q -r -nH --cut-dirs=2 --retr-symlinks \
+		 --no-remove-listing --retr-symlinks \
+		 --no-remove-listing --passive-ftp $i
 	done < <(awk -F "\t" '{print $20}' assembly_summary.txt)
 	cd ../
     done < <(awk '{print $9}' ../Bacteria-NCBI-$date.listing | sed "s/\\r//g")
@@ -122,7 +124,8 @@ then
     mkdir Phages-EBI-$date
     cd Phages-EBI-$date
     echo "Downloading Bacterial Phages"
-    wget -q -r -l1 --no-parent -nd ftp://ftp.ebi.ac.uk/pub/databases/fastafiles/embl_genomes/genomes/Phage/
+    wget -q -r -l1 --no-parent -nd \
+	 --passive-ftp ftp://ftp.ebi.ac.uk/pub/databases/fastafiles/embl_genomes/genomes/Phage/
     echo "Extracting Phages and Renaming fasta files"
     for i in *.gz
     do
