@@ -8,7 +8,8 @@ $ bash microbe-dbs.sh -h
     
     databases :
       -> refseq_bacteria
-      -> ...
+      -> refseq_plasmid
+      -> refseq_viral
 
 ```
 
@@ -20,6 +21,14 @@ $ bash microbe-dbs.sh -h
 
 ### refseq_plasmid 
 * url: ftp://ftp.ncbi.nlm.nih.gov/refseq/release/plasmid/
+* license: NCBI places no restrictions on the use or distribution. However, submitters may claim copyright of the data they have submitted.
+
+### refseq_viral
+* url: ftp://ftp.ncbi.nlm.nih.gov/refseq/release/viral/
+* license: NCBI places no restrictions on the use or distribution. However, submitters may claim copyright of the data they have submitted.
+
+### refseq_archaea
+* url: ftp://ftp.ncbi.nlm.nih.gov/refseq/release/archaea/
 * license: NCBI places no restrictions on the use or distribution. However, submitters may claim copyright of the data they have submitted.
 
 ### ebi_phages

@@ -13,6 +13,8 @@ if [[ $1 == "" ]];then
     echo "    databases :"
     echo "       refseq_bacteria           RefSeq bacteria from NCBI ftp"
     echo "       refseq_plasmid            RefSeq plasmid from NCBI ftp"
+    echo "       refseq_viral              RefSeq viral from NCBI ftp"
+    echo "       refseq_archaea            RefSeq archaea from NCBI ftp"
     echo ""
     exit 0
 else
@@ -23,24 +25,15 @@ else
 		        $DIR/db-scripts/refseq.sh $2 "plasmid" ;;
         refseq_viral)
 		        $DIR/db-scripts/refseq.sh $2 "viral" ;;
-	      g)
-		        genome=1
-		        ;;
-	      f)
-		        phages=1
-		        ;;
-	      p)
-		        plasmid=1
-		        ;;
-        b)
-		        blast=1
-		        ;;
-        h)
+        refseq_archaea)
+		        $DIR/db-scripts/refseq.sh $2 "archaea" ;;
+        help)
             echo " microbe-dbs.sh database output"
             echo "    databases :"
             echo "       refseq_bacteria           RefSeq bacteria from NCBI ftp"
             echo "       refseq_plasmid            RefSeq plasmid from NCBI ftp"
             echo "       refseq_viral              RefSeq virus from NCBI ftp"
+            echo "       refseq_archaea            RefSeq archaea from NCBI ftp"
             echo ""
 		        ;;
         \?)
