@@ -44,5 +44,5 @@ else
 		        echo "Invalid Database !"
 		        exit 0
 		        ;;
-	  esac
+    esac
 fi
