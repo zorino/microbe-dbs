@@ -18,15 +18,19 @@ if [[ $1 == "" ]];then
     echo ""
     exit 0
 else
-	  case "$1" in
-	      refseq_bacteria)
-		        $DIR/db-scripts/refseq.sh $2 "bacteria" ;;
+    case "$1" in
+        refseq_bacteria)
+            $DIR/db-scripts/refseq.sh $2 "bacteria"
+            ;;
         refseq_plasmid)
-		        $DIR/db-scripts/refseq.sh $2 "plasmid" ;;
+            $DIR/db-scripts/refseq.sh $2 "plasmid"
+            ;;
         refseq_viral)
-		        $DIR/db-scripts/refseq.sh $2 "viral" ;;
+            $DIR/db-scripts/refseq.sh $2 "viral"
+            ;;
         refseq_archaea)
-		        $DIR/db-scripts/refseq.sh $2 "archaea" ;;
+            $DIR/db-scripts/refseq.sh $2 "archaea"
+            ;;
         help)
             echo " microbe-dbs.sh database output"
             echo "    databases :"
