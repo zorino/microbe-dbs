@@ -16,6 +16,8 @@ if [[ $1 == "" ]];then
     echo "       refseq_viral              RefSeq viral from NCBI ftp"
     echo "       refseq_archaea            RefSeq archaea from NCBI ftp"
     echo ""
+    echo "       vfdb                      Virulence Factor Database"
+    echo ""
     exit 0
 else
     case "$1" in
