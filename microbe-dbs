@@ -31,6 +31,9 @@ else
         refseq_archaea)
             $DIR/db-scripts/refseq.sh $2 "archaea"
             ;;
+        vfdb)
+            $DIR/db-scripts/vfdb.sh $2
+            ;;
         help)
             echo " microbe-dbs.sh database output"
             echo "    databases :"
@@ -38,6 +41,8 @@ else
             echo "       refseq_plasmid            RefSeq plasmid from NCBI ftp"
             echo "       refseq_viral              RefSeq virus from NCBI ftp"
             echo "       refseq_archaea            RefSeq archaea from NCBI ftp"
+            echo ""
+            echo "       vfdb                      Virulence Factor Database"
             echo ""
 		        ;;
         \?)

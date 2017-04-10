@@ -50,6 +50,7 @@ function organize_files () {
         mkdir rna
         mv *.rna.* rna
     fi
+
 }
 
 
