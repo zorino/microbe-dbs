@@ -7,17 +7,24 @@ date=$(date +%Y-%m-%d)
 
 DIR=$(dirname "$(readlink -f $0)")
 
-if [[ $1 == "" ]];then
-    echo -e "Need at least one database to download !\n"
-    echo " microbe-dbs.sh database output"
-    echo "    databases :"
-    echo "       refseq_bacteria           RefSeq bacteria from NCBI ftp"
-    echo "       refseq_plasmid            RefSeq plasmid from NCBI ftp"
-    echo "       refseq_viral              RefSeq viral from NCBI ftp"
-    echo "       refseq_archaea            RefSeq archaea from NCBI ftp"
-    echo ""
-    echo "       vfdb                      Virulence Factor Database"
-    echo ""
+cli_help=$(cat << EOF
+
+     microbe-dbs.sh database output
+        databases :
+           refseq_bacteria           RefSeq bacteria from NCBI ftp
+           refseq_plasmid            RefSeq plasmid from NCBI ftp
+           refseq_viral              RefSeq viral from NCBI ftp
+           refseq_archaea            RefSeq archaea from NCBI ftp
+
+           vfdb                      Virulence Factor Database
+           mibig                     Minimum Information about a Biosynthetic Gene cluster
+
+EOF
+        )
+
+if [[ $1 == "" ]]; then
+    echo "Need at least 1 databases !!"
+    echo "$cli_help"
     exit 0
 else
     case "$1" in
@@ -36,16 +43,11 @@ else
         vfdb)
             $DIR/db-scripts/vfdb.sh $2
             ;;
+        mibig)
+            $DIR/db-scripts/mibig.sh $2
+            ;;
         help)
-            echo " microbe-dbs.sh database output"
-            echo "    databases :"
-            echo "       refseq_bacteria           RefSeq bacteria from NCBI ftp"
-            echo "       refseq_plasmid            RefSeq plasmid from NCBI ftp"
-            echo "       refseq_viral              RefSeq virus from NCBI ftp"
-            echo "       refseq_archaea            RefSeq archaea from NCBI ftp"
-            echo ""
-            echo "       vfdb                      Virulence Factor Database"
-            echo ""
+            echo "$cli_help"
 		        ;;
         \?)
 		        echo "Invalid Database !"
