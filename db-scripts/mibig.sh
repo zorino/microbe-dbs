@@ -19,9 +19,9 @@ function download_files() {
     mkdir -p $outdir && cd $outdir
 
     echo "Downloading MIBiG $release [$outdir].."
-    wget --show-progress --quiet http://mibig.secondarymetabolites.org/mibig_json_$release.tar.gz
-    wget --show-progress --quiet http://mibig.secondarymetabolites.org/mibig_gbk_$release.tar.gz
-    wget --show-progress --quiet http://mibig.secondarymetabolites.org/MIBiG_prot_seqs_$release.fasta
+    wget --quiet http://mibig.secondarymetabolites.org/mibig_json_$release.tar.gz
+    wget --quiet http://mibig.secondarymetabolites.org/mibig_gbk_$release.tar.gz
+    wget --quiet http://mibig.secondarymetabolites.org/MIBiG_prot_seqs_$release.fasta
 
 }
 

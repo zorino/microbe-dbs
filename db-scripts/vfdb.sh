@@ -19,12 +19,12 @@ function download_files() {
     mkdir -p $outdir && cd $outdir
 
     echo "Downloading VFDB $release [$outdir].."
-    wget --show-progress --quiet http://www.mgc.ac.cn/VFs/Down/VFs.xls.gz
-    wget --show-progress --quiet http://www.mgc.ac.cn/VFs/Down/Comparative_tables_from_VFDB.tar.gz
-    wget --show-progress --quiet http://www.mgc.ac.cn/VFs/Down/VFDB_setA_nt.fas.gz
-    wget --show-progress --quiet http://www.mgc.ac.cn/VFs/Down/VFDB_setA_pro.fas.gz
-    wget --show-progress --quiet http://www.mgc.ac.cn/VFs/Down/VFDB_setB_nt.fas.gz
-    wget --show-progress --quiet http://www.mgc.ac.cn/VFs/Down/VFDB_setB_pro.fas.gz
+    wget --quiet http://www.mgc.ac.cn/VFs/Down/VFs.xls.gz
+    wget --quiet http://www.mgc.ac.cn/VFs/Down/Comparative_tables_from_VFDB.tar.gz
+    wget --quiet http://www.mgc.ac.cn/VFs/Down/VFDB_setA_nt.fas.gz
+    wget --quiet http://www.mgc.ac.cn/VFs/Down/VFDB_setA_pro.fas.gz
+    wget --quiet http://www.mgc.ac.cn/VFs/Down/VFDB_setB_nt.fas.gz
+    wget --quiet http://www.mgc.ac.cn/VFs/Down/VFDB_setB_pro.fas.gz
 
 }
 

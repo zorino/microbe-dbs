@@ -21,9 +21,9 @@ function download_ftp() {
     mkdir -p $outdir && cd $outdir
 
     echo "Downloading NCBI RefSeq $2 $release [$outdir].."
-    wget -R --no-parent --show-progress --quiet ftp://ftp.ncbi.nlm.nih.gov/refseq/release/$2/*.genomic.*
-    wget -R --no-parent --show-progress --quiet ftp://ftp.ncbi.nlm.nih.gov/refseq/release/$2/*.rna.*
-    wget -R --no-parent --show-progress --quiet ftp://ftp.ncbi.nlm.nih.gov/refseq/release/$2/*.nonredundant_protein.*
+    wget -R --no-parent  ftp://ftp.ncbi.nlm.nih.gov/refseq/release/$2/*.genomic.*
+    wget -R --no-parent  ftp://ftp.ncbi.nlm.nih.gov/refseq/release/$2/*.rna.*
+    wget -R --no-parent  ftp://ftp.ncbi.nlm.nih.gov/refseq/release/$2/*.nonredundant_protein.*
 
 }
 

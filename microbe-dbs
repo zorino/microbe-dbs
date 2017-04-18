@@ -27,24 +27,29 @@ if [[ $1 == "" ]]; then
     echo "$cli_help"
     exit 0
 else
+    if [ -z $2 ]; then
+        output="$1"
+    else
+        output=$2
+    fi
     case "$1" in
         refseq_bacteria)
-            $DIR/db-scripts/refseq.sh $2 "bacteria"
+            $DIR/db-scripts/refseq.sh $output "bacteria"
             ;;
         refseq_plasmid)
-            $DIR/db-scripts/refseq.sh $2 "plasmid"
+            $DIR/db-scripts/refseq.sh $output "plasmid"
             ;;
         refseq_viral)
-            $DIR/db-scripts/refseq.sh $2 "viral"
+            $DIR/db-scripts/refseq.sh $output "viral"
             ;;
         refseq_archaea)
-            $DIR/db-scripts/refseq.sh $2 "archaea"
+            $DIR/db-scripts/refseq.sh $output "archaea"
             ;;
         vfdb)
-            $DIR/db-scripts/vfdb.sh $2
+            $DIR/db-scripts/vfdb.sh $output
             ;;
         mibig)
-            $DIR/db-scripts/mibig.sh $2
+            $DIR/db-scripts/mibig.sh $output
             ;;
         help)
             echo "$cli_help"
