@@ -16,9 +16,9 @@ cli_help=$(cat << EOF
             refseq_bacteria           RefSeq bacteria from NCBI ftp
             refseq_plasmid            RefSeq plasmid from NCBI ftp
             cog                       Clusters of Orthologous Groups (COG)
-            mlst                      MLST 
-            vfdb                      Virulence Factor Database [Bacteria]
-            mibig                     Minimum Information about a Biosynthetic Gene cluster [Bacteria]
+            pub_mlst                  Public databases for molecular typing and microbial genome diversity
+            vfdb                      Virulence Factor Database
+            mibig                     Minimum Information about a Biosynthetic Gene cluster
 
 
           [Virus]
@@ -64,6 +64,9 @@ else
             ;;
         mibig)
             $DIR/db-scripts/mibig.sh $output
+            ;;
+        pub_mlst)
+            $DIR/db-scripts/pub_mlst.sh $output
             ;;
         help)
             echo "$cli_help"
