@@ -39,5 +39,3 @@ function organize_files() {
 download_files $1
 organize_files
 
-
-

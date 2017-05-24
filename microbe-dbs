@@ -9,15 +9,26 @@ DIR=$(dirname "$(readlink -f $0)")
 
 cli_help=$(cat << EOF
 
-     microbe-dbs.sh database output
+     microbe-dbs.sh <database> <output>
         databases :
-           refseq_bacteria           RefSeq bacteria from NCBI ftp
-           refseq_plasmid            RefSeq plasmid from NCBI ftp
-           refseq_viral              RefSeq viral from NCBI ftp
-           refseq_archaea            RefSeq archaea from NCBI ftp
 
-           vfdb                      Virulence Factor Database
-           mibig                     Minimum Information about a Biosynthetic Gene cluster
+          [Bacteria]
+            refseq_bacteria           RefSeq bacteria from NCBI ftp
+            refseq_plasmid            RefSeq plasmid from NCBI ftp
+            cog                       Clusters of Orthologous Groups (COG)
+            mlst                      MLST 
+            vfdb                      Virulence Factor Database [Bacteria]
+            mibig                     Minimum Information about a Biosynthetic Gene cluster [Bacteria]
+
+
+          [Virus]
+            refseq_viral              RefSeq viral from NCBI ftp
+
+          [Other]
+            refseq_archaea            RefSeq archaea from NCBI ftp
+
+     Example :
+        $ ./microbe-dbs refseq_bacteria refseq_bacteria_output
 
 EOF
         )
@@ -44,6 +55,9 @@ else
             ;;
         refseq_archaea)
             $DIR/db-scripts/refseq.sh $output "archaea"
+            ;;
+        cog)
+            $DIR/db-scripts/cog.sh $output
             ;;
         vfdb)
             $DIR/db-scripts/vfdb.sh $output
