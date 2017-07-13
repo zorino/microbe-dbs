@@ -26,6 +26,7 @@ cli_help=$(cat << EOF
 
           [Other]
             refseq_archaea            RefSeq archaea from NCBI ftp
+            ebi_idmapping             ID mappings for proteins (Uniprot -> RefSeq, PDB, BioCyc)
 
      Example :
         $ ./microbe-dbs refseq_bacteria refseq_bacteria_output
@@ -67,6 +68,9 @@ else
             ;;
         pub_mlst)
             $DIR/db-scripts/pub_mlst.sh $output
+            ;;
+        ebi_idmapping)
+            $DIR/db-scripts/ebi_idmapping.sh $output
             ;;
         help)
             echo "$cli_help"

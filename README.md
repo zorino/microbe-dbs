@@ -81,6 +81,13 @@ $ bash microbe-dbs.sh -h
 * url: ftp://ftp.ncbi.nlm.nih.gov/refseq/release/archaea/
 * license: NCBI places no restrictions on the use or distribution. However, submitters may claim copyright of the data they have submitted.
 
+#### ebi_idmapping ####
+
+* description: RefSeq: NCBI Reference Sequence Database
+* release: ftp://ftp.ncbi.nlm.nih.gov/refseq/release/RELEASE_NUMBER
+* url: ftp://ftp.ncbi.nlm.nih.gov/refseq/release/archaea/
+* license: NCBI places no restrictions on the use or distribution. However, submitters may claim copyright of the data they have submitted.
+
 
 ### Ray meta ###
 
