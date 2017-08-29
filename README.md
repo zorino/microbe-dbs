@@ -74,6 +74,13 @@ $ bash microbe-dbs.sh -h
 
 ### Other ###
 
+#### ncbi_taxonomy ####
+
+* description: NCBI Taxonomy
+* release: by date
+* url: ftp://ftp.ncbi.nih.gov/pub/taxonomy/
+* license: NCBI places no restrictions on the use or distribution. However, submitters may claim copyright of the data they have submitted.
+
 #### refseq_archaea ####
 
 * description: RefSeq: NCBI Reference Sequence Database
@@ -83,10 +90,10 @@ $ bash microbe-dbs.sh -h
 
 #### ebi_idmapping ####
 
-* description: RefSeq: NCBI Reference Sequence Database
-* release: ftp://ftp.ncbi.nlm.nih.gov/refseq/release/RELEASE_NUMBER
-* url: ftp://ftp.ncbi.nlm.nih.gov/refseq/release/archaea/
-* license: NCBI places no restrictions on the use or distribution. However, submitters may claim copyright of the data they have submitted.
+* description: EBI - Uniprot ID mappings with different databases
+* release: ftp://ftp.uniprot.org/pub/databases/uniprot/current_release/knowledgebase/idmapping/RELEASE.metalink
+* url: ftp://ftp.uniprot.org/pub/databases/uniprot/current_release/knowledgebase/idmapping/
+* license: Creative Commons Attribution-NoDerivs 3.0
 
 
 ### Ray meta ###
