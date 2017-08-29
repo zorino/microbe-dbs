@@ -35,13 +35,12 @@ def search_feature(opt):
         r_fna = next(rec_fna)
         for ft in r_gbf.features:
             if opt.ft_type in ft.type:
-                print(ft.location)
                 if opt.complete and (">" in str(ft.location) or "<" in str(ft.location)):
                     continue
                 seq = r_fna.seq[ft.location.start:ft.location.end]
                 if ft.location.strand != 1:
                     seq = seq.complement()
-                print(">%s" %(ft.qualifiers['product'][0]))
+                print(">%s %s" %(r_gbf.id, ft.qualifiers['product'][0]))
                 print(seq)
 
     handle_gbf.close()
