@@ -74,7 +74,7 @@ else
             $DIR/db-scripts/ebi_idmapping.sh $output
             ;;
         ncbi_taxonomy)
-            $DIR/db-scripts/ncbi-taxonomy.sh $output
+            $DIR/db-scripts/ncbi_taxonomy.sh $output
             ;;
         help)
             echo "$cli_help"
