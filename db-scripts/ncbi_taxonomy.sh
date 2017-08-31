@@ -23,6 +23,7 @@ function download_ftp() {
     echo "Downloading NCBI Taxonomy $release [$outdir].."
     wget ftp://ftp.ncbi.nih.gov/pub/taxonomy/taxdump.tar.gz
     wget ftp://ftp.ncbi.nih.gov/pub/taxonomy/accession2taxid/nucl_gb.accession2taxid.gz
+    wget ftp://ftp.ncbi.nih.gov/pub/taxonomy/accession2taxid/nucl_wgs.accession2taxid.gz
 
 }
 
