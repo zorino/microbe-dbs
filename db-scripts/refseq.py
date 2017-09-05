@@ -152,7 +152,10 @@ if __name__ == "__main__":
 
     args = parser.parse_args()
 
-    if args.which == "search":
-        search_feature(args)
-    elif args.which == "taxonomy":
-        taxonomy(args)
+    try:
+        if args.which == "search":
+            search_feature(args)
+        elif args.which == "taxonomy":
+            taxonomy(args)
+    except:
+        parser.print_help()
