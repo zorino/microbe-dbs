@@ -27,6 +27,7 @@ cli_help=$(cat << EOF
           [Other]
             ncbi_taxonomy             NCBI Taxonomy from ftp
             refseq_archaea            RefSeq archaea from NCBI ftp
+            refseq_fungi              RefSeq fungi from NCBI ftp
             ebi_idmapping             ID mappings for proteins (Uniprot -> RefSeq, PDB, BioCyc)
 
      Example :
@@ -57,6 +58,9 @@ else
             ;;
         refseq_archaea)
             $DIR/db-scripts/refseq.sh $output "archaea"
+            ;;
+        refseq_fungi)
+            $DIR/db-scripts/refseq.sh $output "fungi"
             ;;
         cog)
             $DIR/db-scripts/cog.sh $output
