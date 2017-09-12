@@ -30,11 +30,11 @@ function download_ftp() {
 # organize files into sub-directories
 function organize_files () {
 
-    files=(*.nonredundant_protein.*)
+    files=(*protein.*)
     if [ -e "${files[0]}" ]
     then
-        mkdir nonredundant_protein
-        mv *protein.* nonredundant_protein
+        mkdir protein
+        mv *protein.* protein
     fi
 
     files=(*.genomic.*)
