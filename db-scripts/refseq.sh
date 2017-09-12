@@ -23,7 +23,7 @@ function download_ftp() {
     echo "Downloading NCBI RefSeq $2 $release [$outdir].."
     wget -R --no-parent  ftp://ftp.ncbi.nlm.nih.gov/refseq/release/$2/*.genomic.*
     wget -R --no-parent  ftp://ftp.ncbi.nlm.nih.gov/refseq/release/$2/*.rna.*
-    wget -R --no-parent  ftp://ftp.ncbi.nlm.nih.gov/refseq/release/$2/*.nonredundant_protein.*
+    wget -R --no-parent  ftp://ftp.ncbi.nlm.nih.gov/refseq/release/$2/*protein.*
 
 }
 
@@ -34,7 +34,7 @@ function organize_files () {
     if [ -e "${files[0]}" ]
     then
         mkdir nonredundant_protein
-        mv *.nonredundant_protein.* nonredundant_protein
+        mv *protein.* nonredundant_protein
     fi
 
     files=(*.genomic.*)
