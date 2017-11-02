@@ -1,4 +1,4 @@
-# microbe-dbs
+# Ray Meta Databases Creation
 
 Utilities to fetch biological databases relevant for microbial genomics analysis.
 
