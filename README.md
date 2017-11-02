@@ -61,6 +61,13 @@ $ bash microbe-dbs.sh -h
 * url: http://mibig.secondarymetabolites.org
 * license: Creative Commons Attribution 4.0 International License
 
+#### ncbi_arg ####
+
+* description: NCBI - Bacterial Antimicrobial Resistance Reference Gene Database
+* release: by date
+* url: https://www.ncbi.nlm.nih.gov/bioproject/PRJNA313047
+* license: NCBI places no restrictions on the use or distribution. However, submitters may claim copyright of the data they have submitted.
+
 
 ### Virus ###
 
