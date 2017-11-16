@@ -61,6 +61,14 @@ $ bash microbe-dbs.sh -h
 * url: http://mibig.secondarymetabolites.org
 * license: Creative Commons Attribution 4.0 International License
 
+#### BacDive ####
+
+* description: The Bacterial Diversity Metadatabase
+* release: by date
+* url: https://www.bacdive.de/
+* license: See Term of use and Copyright (https://www.bacdive.de/?site=contact)
+
+
 #### ncbi_arg ####
 
 * description: NCBI - Bacterial Antimicrobial Resistance Reference Gene Database

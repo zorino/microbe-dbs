@@ -20,6 +20,7 @@ cli_help=$(cat << EOF
             vfdb                      Virulence Factor Database
             mibig                     Minimum Information about a Biosynthetic Gene cluster
             ncbi_arg                  NCBI Bacterial Antimicrobial Resistance Reference Gene Database
+            bacdive                   DSMZ Bacterial Diversity Metadatabase [Need User/Password]
 
           [Virus]
             refseq_viral              RefSeq viral from NCBI ftp
@@ -70,6 +71,9 @@ else
             ;;
         mibig)
             $DIR/db-scripts/mibig.sh $output
+            ;;
+		bacdive)
+            $DIR/db-scripts/bacdive.sh $output
             ;;
         ncbi_arg)
             $DIR/db-scripts/ncbi_arg.sh $output
