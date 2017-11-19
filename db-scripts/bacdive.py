@@ -43,11 +43,15 @@ def crawl_ids(u,p):
         if(resp.ok):
             data = resp.json()
             for r in data['results']:
-                ids.append(r['url'].replace(bacdive_url,"")[0:-1])
+                ids.append(r['url'].replace(bacdive_url, "")[0:-1])
             bacdive_current_url = data['next']
             time.sleep(1.5)
         else:
             print('Response not ok')
+            bacdive_current_url = "null"
+
+        if bacdive_current_url == "None":
+            bacdive_current_url = "null"
 
     print(" ")
 
