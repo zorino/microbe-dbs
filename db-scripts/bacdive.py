@@ -50,7 +50,7 @@ def crawl_ids(u,p):
             print('Response not ok')
             bacdive_current_url = "null"
 
-        if bacdive_current_url == "None":
+        if bacdive_current_url[0:4] != "http":
             bacdive_current_url = "null"
 
     print(" ")
