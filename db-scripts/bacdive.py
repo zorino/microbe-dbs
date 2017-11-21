@@ -18,17 +18,16 @@ def crawl_info(u, p, ids, outdir):
     print("# Crawling Bacterial MetaData..")
     header = {'Accept': 'application/json'}
 
-    ids_shuffled = shuffle(ids)
-    for id in ids_shuffled:
+    for _id in ids:
         time.sleep(1.5)
-        resp = requests.get(bacdive_url+"/%s/"%id, auth=(u,p), headers=header)
-        if(resp.ok):
+        resp = requests.get(bacdive_url+"/%s/"%_id, auth=(u, p), headers=header)
+        if resp.ok:
             data = resp.json()
-            outfile = outdir+"/%s.json"%id
+            outfile = outdir+"/%s.json"%_id
             with open(outfile, 'w') as f:
                 f.write(json.dumps(data, indent=2, separators=(',', ': ')))
         else:
-            print("ID: %s  failed"%id)
+            print("ID: %s  failed"%_id)
 
 def crawl_ids(u,p):
     ids = []
@@ -45,12 +44,15 @@ def crawl_ids(u,p):
             for r in data['results']:
                 ids.append(r['url'].replace(bacdive_url, "")[0:-1])
             bacdive_current_url = data['next']
-            time.sleep(1.5)
+            print('.')
+            time.sleep(3)
         else:
             print('Response not ok')
             bacdive_current_url = "null"
 
-        if bacdive_current_url[0:4] != "http":
+        if bacdive_current_url is None:
+            bacdive_current_url = "null"
+        elif bacdive_current_url[0:4] != "http":
             bacdive_current_url = "null"
 
     print(" ")
