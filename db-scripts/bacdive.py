@@ -19,7 +19,7 @@ def crawl_info(u, p, ids, outdir):
     header = {'Accept': 'application/json'}
 
     for _id in ids:
-        time.sleep(1.5)
+        time.sleep(3)
         resp = requests.get(bacdive_url+"/%s/"%_id, auth=(u, p), headers=header)
         if resp.ok:
             data = resp.json()
@@ -65,5 +65,5 @@ if __name__ == "__main__":
     password = sys.argv[2]
     output_dir = sys.argv[3]
     ids = crawl_ids(user, password)
-    print(ids)
+    print(" Number of IDs: %i" % len(ids))
     crawl_info(user, password, ids, output_dir)
