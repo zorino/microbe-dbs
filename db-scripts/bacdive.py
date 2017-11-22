@@ -18,8 +18,12 @@ def crawl_info(u, p, ids, outdir):
     print("# Crawling Bacterial MetaData..")
     header = {'Accept': 'application/json'}
 
+    outfile = outdir+"/zz-ids.txt"
+    with open(outfile, 'w') as f:
+        f.write("\n".join(ids))
+
     for _id in ids:
-        time.sleep(3)
+        time.sleep(5)
         resp = requests.get(bacdive_url+"/%s/"%_id, auth=(u, p), headers=header)
         if resp.ok:
             data = resp.json()
