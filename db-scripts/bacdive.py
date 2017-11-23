@@ -54,7 +54,6 @@ def crawl_ids(u,p):
             for r in data['results']:
                 ids.append(r['url'].replace(bacdive_url, "")[0:-1])
             bacdive_current_url = data['next']
-            print('.')
             time.sleep(3)
         else:
             print('Response not ok')
