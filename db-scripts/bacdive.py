@@ -23,15 +23,21 @@ def crawl_info(u, p, ids, outdir):
         f.write("\n".join(ids))
 
     for _id in ids:
-        time.sleep(5)
-        resp = requests.get(bacdive_url+"/%s/"%_id, auth=(u, p), headers=header)
-        if resp.ok:
-            data = resp.json()
-            outfile = outdir+"/%s.json"%_id
-            with open(outfile, 'w') as f:
-                f.write(json.dumps(data, indent=2, separators=(',', ': ')))
-        else:
-            print("ID: %s  failed"%_id)
+        worked = False
+        tried = 1
+        while not worked:
+            try:
+                time.sleep(2*tried)
+                resp = requests.get(bacdive_url+"/%s/"%_id, auth=(u, p), headers=header)
+                if(resp.ok):
+                    data = resp.json()
+                    outfile = outdir+"/%s.json"%_id
+                    with open(outfile, 'w') as f:
+                        f.write(json.dumps(data, indent=2, separators=(',', ': ')))
+                    worked = True
+            except:
+                print("ID: %s  failed.. retrying" % _id)
+                tried += 5
 
 def crawl_ids(u,p):
     ids = []
