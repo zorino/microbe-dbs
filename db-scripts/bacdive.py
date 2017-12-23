@@ -11,7 +11,7 @@ import json
 import time
 from random import shuffle
 
-bacdive_url = "http://bacdive.dsmz.de/api/bacdive/bacdive_id/"
+bacdive_url = "https://bacdive.dsmz.de/api/bacdive/bacdive_id/"
 
 def crawl_info(u, p, ids, outdir):
 
