@@ -66,7 +66,7 @@ $ bash microbe-dbs.sh -h
 * description: The Bacterial Diversity Metadatabase
 * release: by date
 * url: https://www.bacdive.de/
-* license: See Term of use and Copyright (https://www.bacdive.de/?site=contact)
+* license: See Term of use and Copyright (https://bacdive.dsmz.de/about)
 
 
 #### ncbi_arg ####
