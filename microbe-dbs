@@ -13,6 +13,7 @@ cli_help=$(cat << EOF
         databases :
 
           [Bacteria]
+            uniprotkb_bacteria        UniprotKB (Swiss-Prot / TrEMBL) bacterial proteins
             refseq_bacteria           RefSeq bacteria from NCBI ftp
             refseq_plasmid            RefSeq plasmid from NCBI ftp
             cog                       Clusters of Orthologous Groups (COG)
@@ -21,6 +22,7 @@ cli_help=$(cat << EOF
             mibig                     Minimum Information about a Biosynthetic Gene cluster
             ncbi_arg                  NCBI Bacterial Antimicrobial Resistance Reference Gene Database
             bacdive                   DSMZ Bacterial Diversity Metadatabase [Need User/Password]
+
 
           [Virus]
             refseq_viral              RefSeq viral from NCBI ftp
@@ -48,6 +50,9 @@ else
         output=$2
     fi
     case "$1" in
+		uniprotkb_bacteria)
+			$DIR/db-scripts/uniprot.sh $output
+			;;
         refseq_bacteria)
             $DIR/db-scripts/refseq.sh $output "bacteria"
             ;;
