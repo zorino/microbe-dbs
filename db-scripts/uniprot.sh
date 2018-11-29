@@ -15,7 +15,7 @@ function download_files() {
     then
         outdir=vfdb_$release
     else
-        outdir=$1/vfdb_$release
+        outdir=$1/uniprotkb_bacteria_$release
     fi
     mkdir -p $outdir && cd $outdir
 
@@ -27,7 +27,8 @@ function download_files() {
 
 function organize_files() {
 
-	zcat uniprotkb-bacteria-metadata.tsv.gz  | awk -F "\t" '{print ">"$1"|"$4"\n"$14}' > uniprotkb-bacteria-sequence.fasta
+	echo "Organizing files"
+	zcat uniprotkb-bacteria-metadata.tsv.gz  | tail -n +2 | awk -F "\t" '{print ">"$1"|"$4"\n"$14}' > uniprotkb-bacteria-sequence.fasta
 
 }
 
