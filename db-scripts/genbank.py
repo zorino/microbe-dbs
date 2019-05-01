@@ -13,7 +13,7 @@ from Bio.Alphabet import IUPAC
 
 def get_cds_seq(gb_file):
 
-    with open(gb_file, "rU") as input_handle:
+    with open(gb_file, "r") as input_handle:
         for record in SeqIO.parse(input_handle, "genbank"):
             if record.features:
                 for feature in record.features:
