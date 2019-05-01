@@ -1,9 +1,9 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# author:  	maxime déraspe
+# author:       maxime déraspe
 # email:	maximilien1er@gmail.com
-# date:    	2017-05-25
-# version: 	0.01
+# date:         2017-05-25
+# version:      0.01
 
 import sys
 from Bio import SeqIO
@@ -19,11 +19,13 @@ def get_cds_seq(gb_file):
                 for feature in record.features:
                     if feature.type == "CDS":
                         header = record.id + "|"
-                        header += feature.qualifiers['gene'][0] + "|"
+                        if 'gene' in feature.qualifiers:
+                            header += feature.qualifiers['gene'][0]
+                        header += "|"
                         header += feature.qualifiers['product'][0]
                         outseq = SeqRecord(Seq(feature.qualifiers['translation'][0],
                                                IUPAC.protein),
-                                           id=header, name=feature.qualifiers['gene'][0],
+                                           id=header, name=feature.qualifiers['product'][0],
                                            description="")
                         print(outseq.format("fasta").rstrip())
 
