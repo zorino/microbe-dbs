@@ -3,8 +3,8 @@
 Utilities to fetch biological databases relevant for microbial genomics analysis.
 
 ```
-$ bash microbe-dbs.sh -h
- microbe-dbs.sh <databases> <output>
+$ ./microbe-dbs -h
+ microbe-dbs <databases> <output>
     
     databases :
       -> refseq_bacteria
