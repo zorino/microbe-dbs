@@ -61,7 +61,7 @@ $ bash microbe-dbs.sh -h
 * url: http://mibig.secondarymetabolites.org
 * license: Creative Commons Attribution 4.0 International License
 
-#### BacDive ####
+#### bacdive ####
 
 * description: The Bacterial Diversity Metadatabase
 * release: by date
