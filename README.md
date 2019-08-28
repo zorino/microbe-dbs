@@ -68,6 +68,12 @@ $ bash microbe-dbs.sh -h
 * url: https://www.bacdive.de/
 * license: See Term of use and Copyright (https://bacdive.dsmz.de/about)
 
+#### resfinder_db ####
+
+* description: ResFinder DB - ResFinder identifies acquired antimicrobial resistance genes and/or chromosomal mutations
+* release: last git commit date
+* url: https://bitbucket.org/genomicepidemiology/resfinder_db/
+* license: Apache License, Version 2.0 (the "License")
 
 #### ncbi_arg ####
 
