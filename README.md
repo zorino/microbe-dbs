@@ -57,7 +57,7 @@ $ ./microbe-dbs -h
 #### mibig ####
 
 * description: The Minimum Information about a Biosynthetic Gene cluster (MIBiG) database
-* release: 1.3 (September 3rd, 2016)
+* release: Version 1.4 (August 6th, 2018)
 * url: http://mibig.secondarymetabolites.org
 * license: Creative Commons Attribution 4.0 International License
 

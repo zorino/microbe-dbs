@@ -7,7 +7,7 @@
 # download files from web site
 function download_files() {
 
-    release="1.3"
+    release="1.4"
 
     out_dir=""
     if [ -z $1 ]
@@ -19,9 +19,9 @@ function download_files() {
     mkdir -p $outdir && cd $outdir
 
     echo "Downloading MIBiG $release [$outdir].."
-    wget --quiet http://mibig.secondarymetabolites.org/mibig_json_$release.tar.gz
-    wget --quiet http://mibig.secondarymetabolites.org/mibig_gbk_$release.tar.gz
-    wget --quiet http://mibig.secondarymetabolites.org/MIBiG_prot_seqs_$release.fasta
+    wget --quiet https://dl.secondarymetabolites.org/mibig/mibig_json_$release.tar.gz
+    wget --quiet https://dl.secondarymetabolites.org/mibig/mibig_gbk_$release.tar.gz
+    wget --quiet https://dl.secondarymetabolites.org/mibig/mibig_prot_seqs_$release.fasta
 
 }
 
@@ -38,4 +38,3 @@ function organize_files() {
 
 download_files $1
 organize_files
-
