@@ -51,9 +51,9 @@ else
         output=$2
     fi
     case "$1" in
-		uniprotkb_bacteria)
-			$DIR/db-scripts/uniprot.sh $output
-			;;
+        uniprotkb_bacteria)
+            $DIR/db-scripts/uniprot.sh $output
+            ;;
         refseq_bacteria)
             $DIR/db-scripts/refseq.sh $output "bacteria"
             ;;

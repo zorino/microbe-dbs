@@ -6,29 +6,31 @@
 
 function download_files() {
 
-	echo "Download sequences"
+    echo "Download sequences"
 
-	release=$(date +%Y-%m-%d)
+    release=$(date +%Y-%m-%d)
 
     out_dir=""
     if [ -z $1 ]
     then
-        outdir=vfdb_$release
+        outdir=uniprotkb_bacteria_$release
     else
         outdir=$1/uniprotkb_bacteria_$release
     fi
     mkdir -p $outdir && cd $outdir
 
-	# tsv file
-	curl 'https://www.uniprot.org/uniprot/?query=taxonomy:2&format=tab&force=true&columns=id,entry%20name,reviewed,protein%20names,genes,organism,lineage(all),go,comment(FUNCTION),comment(PATHWAY),ec,mass,length,sequence&sort=score&compress=yes' > uniprotkb-bacteria-metadata.tsv.gz
+    wget ftp://ftp.uniprot.org/pub/databases/uniprot/current_release/knowledgebase/taxonomic_divisions/uniprot_sprot_bacteria.dat.gz
+    wget ftp://ftp.uniprot.org/pub/databases/uniprot/current_release/knowledgebase/taxonomic_divisions/uniprot_trembl_bacteria.dat.gz
 
 }
 
 
 function organize_files() {
 
-	echo "Organizing files"
-	zcat uniprotkb-bacteria-metadata.tsv.gz  | tail -n +2 | awk -F "\t" '{print ">"$1"|"$4"\n"$14}' > uniprotkb-bacteria-sequence.fasta
+    echo "Organizing files - creating fasta"
+    script_path=`dirname $0`
+    python $script_path/embl-filter.py fasta uniprot_sprot_bacteria.dat.gz > uniprot_sprot_bacteria.fasta
+    python $script_path/embl-filter.py fasta uniprot_trembl_bacteria.dat.gz > uniprot_trembl_bacteria.fasta
 
 }
 

@@ -7,6 +7,7 @@ $ ./microbe-dbs -h
  microbe-dbs <databases> <output>
     
     databases :
+      -> uniprotkb_bacteria
       -> refseq_bacteria
       -> refseq_plasmid
       -> refseq_viral
@@ -18,6 +19,13 @@ $ ./microbe-dbs -h
 ## Databases ##
 
 ### Bacteria ###
+
+#### uniprotkb_bacteria ####
+
+* description: UniprotKB (SwissProt/TrEMBL) - Bacteria
+* release: ftp://ftp.uniprot.org/pub/databases/uniprot/current_release/knowledgebase/taxonomic_divisions/reldate.txt
+* url: ftp://ftp.uniprot.org/pub/databases/uniprot/current_release/knowledgebase/taxonomic_divisions/
+* license: Creative Commons Attribution (CC BY 4.0)
 
 #### refseq_bacteria ####
 
