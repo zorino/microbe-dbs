@@ -29,7 +29,7 @@ function download_files() {
 function organize_files() {
 	echo -ne "Extracting CDS sequences from NCBI ..."
 	script_path=`dirname $0`
-    python $script_path/ncbi_arg.py ReferenceGeneCatalog.txt >> ncbi_arg.fasta
+    python $script_path/ncbi_arg.py ReferenceGeneCatalog.txt ncbi_arg.fasta
     echo " Done!"
 }
 
