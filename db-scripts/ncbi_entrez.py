@@ -10,13 +10,9 @@ from time import sleep
 from Bio import Entrez
 
 
-# Main #
-if __name__ == "__main__":
+def bioproject_nuccore(project_id, output):
 
     Entrez.email = "microbesdbs@example.com"
-
-    project_id = sys.argv[1]
-    output = sys.argv[2]
 
     handle = Entrez.elink(dbfrom="bioproject", id=project_id, linkname="bioproject_nuccore")
     records = Entrez.read(handle)
@@ -25,3 +21,34 @@ if __name__ == "__main__":
         sleep(1)
         print("".join(Entrez.efetch(db='nuccore', id=r['Id'], rettype=output).readlines()))
     handle.close()
+
+
+
+# Main #
+if __name__ == "__main__":
+
+
+    usage = """
+ncbi_entrez.py program [options]
+
+program:
+
+  bioproject_nuccore  <project_id> <output>
+
+"""
+
+
+    if len(sys.argv) < 2:
+        print(usage)
+        sys.exit(1)
+
+
+    if sys.argv[1] == "bioproject_nucccore":
+        if len(sys.argv) < 4:
+            print(usage)
+            sys.exit(1)
+
+        project_id = sys.argv[2]
+        output = sys.argv[3]
+
+        bioproject_nuccore(project_id, output)
