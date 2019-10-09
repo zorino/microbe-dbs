@@ -35,7 +35,7 @@ if __name__ == "__main__":
             elif lA[12] != "":
                 ncbi_fetch_protein(lA[12], output)
 
-            time.sleep(2)
+            time.sleep(1)
 
 
     output.close
