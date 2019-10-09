@@ -19,7 +19,7 @@ function download_files() {
     fi
     mkdir -p $outdir && cd $outdir
 
-    echo -ne "Downloading NCBI ARG $release [$outdir].."
+    echo -ne "Downloading NCBI ARG Reference file $release [$outdir].."
 	wget https://ftp.ncbi.nlm.nih.gov/pathogen/Antimicrobial_resistance/Data/latest/ReferenceGeneCatalog.txt
     # python $script_path/ncbi_entrez.py bioproject_nucccore 313047 gb > NCBI-ARG.gbk
 	echo " Done!"
@@ -27,7 +27,7 @@ function download_files() {
 
 # gunzip files
 function organize_files() {
-	echo -ne "Extracting CDS sequences from genbank.."
+	echo -ne "Extracting CDS sequences from NCBI ..."
 	script_path=`dirname $0`
     python $script_path/ncbi_arg.py ReferenceGeneCatalog.txt >> ncbi_arg.fasta
     echo " Done!"
