@@ -20,7 +20,8 @@ function download_files() {
     mkdir -p $outdir && cd $outdir
 
     echo -ne "Downloading NCBI ARG $release [$outdir].."
-	python $script_path/ncbi_entrez.py 313047 gb > NCBI-ARG.gbk
+	wget https://ftp.ncbi.nlm.nih.gov/pathogen/Antimicrobial_resistance/Data/latest/ReferenceGeneCatalog.txt
+    # python $script_path/ncbi_entrez.py bioproject_nucccore 313047 gb > NCBI-ARG.gbk
 	echo " Done!"
 }
 
@@ -28,8 +29,8 @@ function download_files() {
 function organize_files() {
 	echo -ne "Extracting CDS sequences from genbank.."
 	script_path=`dirname $0`
-	python $script_path/genbank.py get_cds_seq NCBI-ARG.gbk > NCBI-ARG.fasta
-	echo " Done!"
+    python $script_path/ncbi_arg.py ReferenceGeneCatalog.txt >> ncbi_arg.fasta
+    echo " Done!"
 }
 
 download_files $1
