@@ -20,7 +20,7 @@ function download_files() {
     mkdir -p $outdir && cd $outdir
 
     echo -ne "Downloading NCBI ARG Reference file $release [$outdir].."
-	wget https://ftp.ncbi.nlm.nih.gov/pathogen/Antimicrobial_resistance/Data/latest/ReferenceGeneCatalog.txt
+	wget --quiet https://ftp.ncbi.nlm.nih.gov/pathogen/Antimicrobial_resistance/Data/latest/ReferenceGeneCatalog.txt
     # python $script_path/ncbi_entrez.py bioproject_nucccore 313047 gb > NCBI-ARG.gbk
 	echo " Done!"
 }
