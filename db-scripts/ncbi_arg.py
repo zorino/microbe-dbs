@@ -26,16 +26,20 @@ if __name__ == "__main__":
 
     output = open(file_output, "w")
 
+    counter = 0
+
     with open(file) as f:
         l = f.readline()
         for l in f:
+            counter += 1
             lA = l.split("\t")
             if lA[9] != "":
                 ncbi_fetch_protein(lA[9], output)
             elif lA[12] != "":
                 ncbi_fetch_protein(lA[12], output)
 
-            time.sleep(1)
+            if (counter % 2) == 0:
+                time.sleep(1)
 
 
     output.close
