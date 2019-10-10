@@ -11,7 +11,7 @@ $ ./microbe-dbs -h
       -> refseq_bacteria
       -> refseq_plasmid
       -> refseq_viral
-      -> ncbi_ar
+      -> ncbi_arg
       -> vfdb
       -> ...
 ```
@@ -87,7 +87,7 @@ $ ./microbe-dbs -h
 
 * description: NCBI - Bacterial Antimicrobial Resistance Reference Gene Database
 * release: by date
-* url: https://www.ncbi.nlm.nih.gov/bioproject/PRJNA313047
+* url: https://ftp.ncbi.nlm.nih.gov/pathogen/Antimicrobial_resistance/Data/
 * license: NCBI places no restrictions on the use or distribution. However, submitters may claim copyright of the data they have submitted.
 
 
