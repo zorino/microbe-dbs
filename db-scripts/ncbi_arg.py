@@ -7,39 +7,98 @@
 
 import sys
 import time
-from Bio import Entrez
+from Bio import Entrez, SeqIO
+import urllib
 
-def ncbi_fetch_protein(protein_id, output):
+Entrez.email = "microbesdbs@example.com"
 
-    Entrez.email = "microbesdbs@example.com"
-    handle = Entrez.efetch(db="protein", id=protein_id, rettype="fasta", retmode="text")
-    data = handle.read()
-    output.write(data.strip())
-    output.write("\n")
+def ncbi_fetch_proteins(protein_ids, output):
 
+    request = Entrez.epost("protein", id=",".join(protein_ids))
+
+    try:
+        result = Entrez.read(request)
+    except RuntimeError as e:
+        #FIXME: How generate NAs instead of causing an error with invalid IDs?
+        print("An error occurred while retrieving the annotations.")
+        print("The error returned was %s" % e)
+        sys.exit(-1)
+
+    webEnv = result["WebEnv"]
+    queryKey = result["QueryKey"]
+    data = Entrez.efetch(db="protein", webenv=webEnv, query_key=queryKey, retmode="xml")
+    annotations = Entrez.read(data)
+
+    for a in annotations:
+        output.write(">%s\n"%a['GBSeq_accession-version'])
+        output.write("%s\n"%a['GBSeq_sequence'].upper())
+
+
+def merge_reference_with_sequence(tsv_file, fasta_file):
+
+    new_output = tsv_file.replace(".txt",".tsv")
+    writer = open(new_output, "w")
+
+    sequences = {}
+    for record in SeqIO.parse(fasta_file, "fasta"):
+        sequences[record.id] = str(record.seq)
+
+    with open(tsv_file) as f:
+        header = f.readline().rstrip().split("\t")
+        header.insert(0,"entryid")
+        header.append("sequence")
+        writer.write("\t".join(header))
+        writer.write("\n")
+
+        for l in f:
+            lA = l.rstrip().split("\t")
+            entryid = ""
+            if lA[9] != "":
+                entryid = lA[9]
+            elif lA[12] != "":
+                entryid = lA[12]
+
+            if entryid == "" or (entryid not in sequences):
+                continue
+
+            lA.insert(0, entryid)
+            lA.append(sequences[entryid])
+            writer.write("\t".join(lA))
+            writer.write("\n")
 
 # Main #
 if __name__ == "__main__":
 
-    file = sys.argv[1]
+    file_meta = sys.argv[1]
     file_output = sys.argv[2]
 
     output = open(file_output, "w")
 
     counter = 0
+    protein_ids = []
 
-    with open(file) as f:
+    with open(file_meta) as f:
         l = f.readline()
         for l in f:
             counter += 1
             lA = l.split("\t")
+            if lA[5] != "AMR" and lA[5] != "STRESS":
+                continue
             if lA[9] != "":
-                ncbi_fetch_protein(lA[9], output)
+                if len(protein_ids) < 100:
+                    protein_ids.append(lA[9])
             elif lA[12] != "":
-                ncbi_fetch_protein(lA[12], output)
+                if len(protein_ids) < 100:
+                    protein_ids.append(lA[12])
 
-            if (counter % 2) == 0:
-                time.sleep(1)
+            if len(protein_ids) >= 100:
+                ncbi_fetch_proteins(protein_ids, output)
+                protein_ids = []
 
+
+    if len(protein_ids) > 0:
+        ncbi_fetch_proteins(protein_ids, output)
 
     output.close
+
+    merge_reference_with_sequence(file_meta, file_output)
