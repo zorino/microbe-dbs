@@ -88,7 +88,7 @@ $ ./microbe-dbs -h
 * description: NCBI - Bacterial Antimicrobial Resistance Reference Gene Database
 * release: by date
 * url: https://ftp.ncbi.nlm.nih.gov/pathogen/Antimicrobial_resistance/Data/
-* license: NCBI places no restrictions on the use or distribution. However, submitters may claim copyright of the data they have submitted.
+* license: Public Domain (see https://raw.githubusercontent.com/ncbi/amr/master/LICENSE)
 
 
 ### Virus ###
