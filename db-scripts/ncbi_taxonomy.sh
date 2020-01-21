@@ -32,6 +32,9 @@ function organize_files () {
 
     mkdir taxdump
     tar xf taxdump.tar.gz -C ./taxdump
+    echo -e "\n\nExtracting Bacteria Kingdom Taxonomy.."
+    dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+    python $dir/ncbi_taxonomy.py ./taxdump/nodes.dmp ./taxdump/names.dmp 0 > ./Bacteria-Taxa.tsv
     rm taxdump.tar.gz
 
 }
@@ -39,4 +42,3 @@ function organize_files () {
 
 download_ftp $1
 organize_files
-
