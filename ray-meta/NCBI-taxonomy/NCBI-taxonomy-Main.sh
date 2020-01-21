@@ -1,1 +1,0 @@
-NCBI-taxonomy-CreateRayInputStructures.sh

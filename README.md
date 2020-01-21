@@ -131,7 +131,3 @@ $ ./microbe-dbs -h
 * url: ftp://ftp.uniprot.org/pub/databases/uniprot/current_release/knowledgebase/idmapping/
 * license: Creative Commons Attribution-NoDerivs 3.0
 
-
-### Ray meta ###
-
-For Ray Meta DBs creation see ./ray-meta/
