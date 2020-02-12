@@ -45,8 +45,12 @@ def merge_reference_with_sequence(tsv_file, fasta_file):
 
     with open(tsv_file) as f:
         header = f.readline().rstrip().split("\t")
+        del header[14:19]
+        del header[11]
+        del header[2]
         header.insert(0,"entryid")
         header.append("sequence")
+        header.append("sequence_length")
         writer.write("\t".join(header))
         writer.write("\n")
 
@@ -61,8 +65,13 @@ def merge_reference_with_sequence(tsv_file, fasta_file):
             if entryid == "" or (entryid not in sequences):
                 continue
 
+            # delete unwanted index
+            del lA[14:19]
+            del lA[11]
+            del lA[2]
             lA.insert(0, entryid)
             lA.append(sequences[entryid])
+            lA.append(str(len(sequences[entryid])))
             writer.write("\t".join(lA))
             writer.write("\n")
 
