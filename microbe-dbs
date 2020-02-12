@@ -23,7 +23,7 @@ cli_help=$(cat << EOF
             resfinder_db              ResFinder Database
             ncbi_arg                  NCBI Bacterial Antimicrobial Resistance Reference Gene Database
             bacdive                   DSMZ Bacterial Diversity Metadatabase [Need User/Password]
-
+            ebi_mgnify_hg             EBI MGnify Human Gut Proteins Catalogue 90 (high quality)
 
           [Virus]
             refseq_viral              RefSeq viral from NCBI ftp
@@ -86,6 +86,9 @@ else
             ;;
         ncbi_arg)
             $DIR/db-scripts/ncbi_arg.sh $output
+            ;;
+        ebi_mgnify_hg)
+            $DIR/db-scripts/ebi_mgnify_uhgp.sh $output
             ;;
         pub_mlst)
             $DIR/db-scripts/pub_mlst.sh $output
