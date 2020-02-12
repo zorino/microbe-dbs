@@ -32,7 +32,7 @@ function organize_files () {
     echo -e "\n\nMerging Mgnify Data.."
     dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
     python $dir/ebi_mgnify_uhgp.py uhgp-90_hq.faa uhgp-90_eggNOG.tsv > uhgp-90.tsv
-    rm uhgp-90_hq.faa uhgp-90_hq.tsv
+    rm uhgp-90_hq.faa uhgp-90_eggNOG.tsv
 
 }
 
