@@ -90,6 +90,13 @@ $ ./microbe-dbs -h
 * url: https://ftp.ncbi.nlm.nih.gov/pathogen/Antimicrobial_resistance/Data/
 * license: Public Domain (see https://raw.githubusercontent.com/ncbi/amr/master/LICENSE)
 
+#### ebi_mgnify_hg ####
+
+* description: EBI MGnify Human Gut Proteins Catalogue 90 (high quality)
+* release: by date
+* url: http://ftp.ebi.ac.uk/pub/databases/metagenomics/mgnify_genomes/human-gut/2019_09/uhgp_catalogue/uhgp-90/
+* license: See https://www.ebi.ac.uk/metagenomics/about
+
 
 ### Virus ###
 
