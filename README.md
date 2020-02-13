@@ -2,8 +2,20 @@
 
 Utilities to fetch biological databases relevant for microbial genomics analysis.
 
+Some database require python to download and at least 2 libraries (biopython and requests).
+
+You can install the environment with conda from the environment.yml file.
+
+
+```shell
+conda env create -f environment.yml
+conda activate microbe-dbs
 ```
-$ ./microbe-dbs -h
+
+Use the bash CLI to list databases.
+
+```shell
+./microbe-dbs -h
  microbe-dbs <databases> <output>
     
     databases :
