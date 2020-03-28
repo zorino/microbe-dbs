@@ -19,6 +19,7 @@ cli_help=$(cat << EOF
             cog                       Clusters of Orthologous Groups (COG)
             pub_mlst                  Public databases for molecular typing and microbial genome diversity
             vfdb                      Virulence Factor Database
+            isfinder                  IS finder database
             mibig                     Minimum Information about a Biosynthetic Gene cluster
             resfinder_db              ResFinder Database
             ncbi_arg                  NCBI Bacterial Antimicrobial Resistance Reference Gene Database
@@ -75,10 +76,13 @@ else
         vfdb)
             $DIR/db-scripts/vfdb.sh $output
             ;;
+        isfinder)
+            $DIR/db-scripts/isfinder.sh $output
+            ;;
         mibig)
             $DIR/db-scripts/mibig.sh $output
             ;;
-		bacdive)
+        bacdive)
             $DIR/db-scripts/bacdive.sh $output
             ;;
         resfinder_db)
@@ -101,10 +105,10 @@ else
             ;;
         help)
             echo "$cli_help"
-		        ;;
+            ;;
         \?)
-		        echo "Invalid Database !"
-		        exit 0
-		        ;;
+            echo "Invalid Database !"
+            exit 0
+            ;;
     esac
 fi
