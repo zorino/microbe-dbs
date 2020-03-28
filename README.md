@@ -74,6 +74,13 @@ Use the bash CLI to list databases.
 * url: http://www.mgc.ac.cn/VFs/download.htm
 * license: none reported. Copyrighted to Key Laboratory of Systems Biology of Pathogens, Institue of Pathogen Biology, CAMS&PUMC, Bejing, China.
 
+#### isfinder ####
+
+* description: ISFinder Database
+* release: by date
+* url: https://github.com/thanhleviet/ISfinder-sequences
+* license: none reported. Citation needed.
+
 #### mibig ####
 
 * description: The Minimum Information about a Biosynthetic Gene cluster (MIBiG) database
