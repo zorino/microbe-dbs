@@ -21,8 +21,7 @@ function download_ftp() {
     mkdir -p $outdir && cd $outdir
 
     echo "Downloading EBI Mgnify Protein Catalogue $release [$outdir].."
-    wget http://ftp.ebi.ac.uk/pub/databases/metagenomics/mgnify_genomes/human-gut/2019_09/uhgp_catalogue/uhgp-90/uhgp-90_hq.faa
-    wget http://ftp.ebi.ac.uk/pub/databases/metagenomics/mgnify_genomes/human-gut/2019_09/uhgp_catalogue/uhgp-90/uhgp-90_eggNOG.tsv
+    wget http://ftp.ebi.ac.uk/pub/databases/metagenomics/mgnify_genomes/human-gut/v1.0/uhgp_catalogue/uhgp-90.tar.gz
 
 }
 
@@ -31,8 +30,9 @@ function organize_files () {
 
     echo -e "\n\nMerging Mgnify Data.."
     dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-    python $dir/ebi_mgnify_uhgp.py uhgp-90_hq.faa uhgp-90_eggNOG.tsv > uhgp-90.tsv
-    rm uhgp-90_hq.faa uhgp-90_eggNOG.tsv
+    tar -zxvf uhgp-90.tar.gz uhgp-90/uhgp-90_hq.faa uhgp-90/uhgp-90_eggNOG.tsv
+    python $dir/ebi_mgnify_uhgp.py uhgp-90/uhgp-90_hq.faa uhgp-90/uhgp-90_eggNOG.tsv > uhgp-90.tsv
+    rm -fr uhgp-90.tar.gz uhgp-90/
 
 }
 
