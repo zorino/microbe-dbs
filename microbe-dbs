@@ -25,6 +25,8 @@ cli_help=$(cat << EOF
             ncbi_arg                  NCBI Bacterial Antimicrobial Resistance Reference Gene Database
             bacdive                   DSMZ Bacterial Diversity Metadatabase [Need User/Password]
             ebi_mgnify_hg             EBI MGnify Human Gut Proteins Catalogue 90 (high quality)
+            adp3                      ADP3 Antimicrobial Peptide Database - University of Nebraska
+
 
           [Virus]
             refseq_viral              RefSeq viral from NCBI ftp
@@ -93,6 +95,9 @@ else
             ;;
         ebi_mgnify_hg)
             $DIR/db-scripts/ebi_mgnify_uhgp.sh $output
+            ;;
+        adp3)
+            $DIR/db-scripts/adp3.sh $output
             ;;
         pub_mlst)
             $DIR/db-scripts/pub_mlst.sh $output
