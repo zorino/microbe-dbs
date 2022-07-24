@@ -26,6 +26,7 @@ cli_help=$(cat << EOF
             bacdive                   DSMZ Bacterial Diversity Metadatabase [Need User/Password]
             ebi_mgnify_hg             EBI MGnify Human Gut Proteins Catalogue 90 (high quality)
             adp3                      ADP3 Antimicrobial Peptide Database - University of Nebraska
+            dbaasp                    DBAASP Antimicrobial Peptide Database - dbaasp.org
 
 
           [Virus]
@@ -98,6 +99,9 @@ else
             ;;
         adp3)
             $DIR/db-scripts/adp3.sh $output
+            ;;
+        dbaasp)
+            $DIR/db-scripts/dbaasp.sh $output
             ;;
         pub_mlst)
             $DIR/db-scripts/pub_mlst.sh $output
